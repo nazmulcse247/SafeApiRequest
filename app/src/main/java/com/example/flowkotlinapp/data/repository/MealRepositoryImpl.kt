@@ -13,11 +13,11 @@ import javax.inject.Inject
 class MealRepositoryImpl @Inject constructor(
     private val mealSearchApi: MealSearchApi,
     private val mealApiMapper: MealApiMapper,
-    private val safeApiRequest: SafeApiRequest
-) : MealRepository {
+
+) : MealRepository , SafeApiRequest() {
     override suspend fun getMeals(s : String): Flow<ApiResult<Meals>> {
         return mapFromApiResponse(
-            safeApiRequest.downloadData { 
+            downloadData {
                 mealSearchApi.getSearchMealList(s)
             },mealApiMapper
         )

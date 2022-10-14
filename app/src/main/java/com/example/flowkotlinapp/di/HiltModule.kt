@@ -6,6 +6,7 @@ import com.example.flowkotlinapp.data.network.utils.SafeApiRequest
 import com.example.flowkotlinapp.data.remote.MealSearchApi
 import com.example.flowkotlinapp.data.repository.MealRepositoryImpl
 import com.example.flowkotlinapp.domain.repository.MealRepository
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,8 +32,8 @@ object HiltModule {
 
     @Provides
     @Singleton
-    fun provideMealSearchRepository(mealSearchApi: MealSearchApi,mealApiMapper: MealApiMapper,safeApiRequest: SafeApiRequest) : MealRepository{
-        return MealRepositoryImpl(mealSearchApi,mealApiMapper,safeApiRequest)
+    fun provideMealSearchRepository(mealSearchApi: MealSearchApi,mealApiMapper: MealApiMapper) : MealRepository{
+        return MealRepositoryImpl(mealSearchApi,mealApiMapper)
     }
 
 

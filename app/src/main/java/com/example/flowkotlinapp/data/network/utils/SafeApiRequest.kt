@@ -1,5 +1,7 @@
 package com.example.flowkotlinapp.data.network.utils
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import com.example.flowkotlinapp.common.ApiResult
 import dagger.Provides
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +24,7 @@ abstract class SafeApiRequest {
                     if (response.isSuccessful){
                         response.body()?.let {
                             emit(ApiResult.Success(data = it))
+                            Log.d(TAG, "downloadData: "+ response.body().toString())
                         }?: emit(ApiResult.Error(message = "Unknown error occurred", code = 0))
                     }else{
                         emit(ApiResult.Error(message = "", code = response.code()))

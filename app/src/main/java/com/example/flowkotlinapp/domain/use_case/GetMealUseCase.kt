@@ -10,10 +10,14 @@ import kotlinx.coroutines.flow.Flow
 
 import javax.inject.Inject
 
-class GetMealUseCase @Inject constructor(private val repository: MealRepository) : ApiUseCaseParams<String, Meals>{
-    override suspend fun execute(params: String) = repository.getMeals(params)
+class GetMealUseCase @Inject constructor(private val repository: MealRepository) :
+    ApiUseCaseParams<GetMealUseCase.Params, Meals>{
 
+    data class Params(
+        val chiken : String
+    )
 
+    override suspend fun execute(params: GetMealUseCase.Params) = repository.getMeals(params)
 }
 
 /*class GetMealUseCase @Inject constructor(private val repository: MealRepository){

@@ -10,9 +10,9 @@ class MealApiMapper @Inject constructor() : Mapper<MealsDTO, Meals> {
         return Meals(
             meals = type.meals?.map {
                Meal(
-                   name = it.name ?: "",
-                   mealId = it.mealId ?: "",
-                   image = it.image ?: "",
+                   idMeal = it.idMeal ?: "",
+                   strMeal = it.strMeal ?: "",
+                   strMealThumb = it.strMealThumb ?: "",
 
                )
             }

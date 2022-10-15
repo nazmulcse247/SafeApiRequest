@@ -7,6 +7,7 @@ import com.example.flowkotlinapp.data.network.utils.SafeApiRequest
 import com.example.flowkotlinapp.data.remote.MealSearchApi
 import com.example.flowkotlinapp.domain.model.Meals
 import com.example.flowkotlinapp.domain.repository.MealRepository
+import com.example.flowkotlinapp.domain.use_case.GetMealUseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -15,10 +16,10 @@ class MealRepositoryImpl @Inject constructor(
     private val mealApiMapper: MealApiMapper,
 
 ) : MealRepository , SafeApiRequest() {
-    override suspend fun getMeals(s : String): Flow<ApiResult<Meals>> {
+    override suspend fun getMeals(s : GetMealUseCase.Params): Flow<ApiResult<Meals>> {
         return mapFromApiResponse(
             downloadData {
-                mealSearchApi.getSearchMealList(s)
+                mealSearchApi.getSearchMealList(s.chiken)
             },mealApiMapper
         )
     }

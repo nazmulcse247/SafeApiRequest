@@ -17,7 +17,7 @@ class GetMealUseCase @Inject constructor(private val repository: MealRepository)
         val chiken : String
     )
 
-    override suspend fun execute(params: GetMealUseCase.Params) = repository.getMeals(params)
+    override suspend fun execute(params: Params) = repository.getMeals(params)
 }
 
 /*class GetMealUseCase @Inject constructor(private val repository: MealRepository){

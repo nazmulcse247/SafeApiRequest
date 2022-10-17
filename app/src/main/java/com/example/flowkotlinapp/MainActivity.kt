@@ -42,12 +42,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     Log.d("meal", "bindUiObserver value"+ state.data.meals.toString())
                     Toast.makeText(this@MainActivity,"size "+ state.data.meals?.size.toString(),Toast.LENGTH_LONG).show()
                     binding.progressBar.visibility = View.GONE
+
+                    Toast.makeText(this,checkAppVersion(),Toast.LENGTH_LONG).show()
                 }
                 is MealUiState.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
                 }
             }
         }
+    }
+
+    private fun checkAppVersion() : String{
+        var packageInfo = this.packageManager.getPackageInfo(this.packageName,0)
+        var currentVersion = packageInfo.versionName
+        var packageName = packageInfo.packageName
+        return currentVersion + packageName
     }
 }
 

@@ -16,24 +16,6 @@ class MealViewModel @Inject constructor(private val getMealUseCase: GetMealUseCa
     private val _mealList = MutableStateFlow<MealUiState<Any>>(MealUiState.Loading(true))
     val mealList get() = _mealList
 
-//      fun getMeal(s : String){
-//        getMealUseCase.execute(s).onEach {
-//            when(it){
-//                is ApiResult.Loading -> {
-//                    _mealList.value = MealState(isLoading = true)
-//                }
-//
-//                is ApiResult.Success -> {
-//                    _mealList.value = MealState(data = it.data.meals)
-//                }
-//
-//                is ApiResult.Error -> {
-//                    _mealList.value = MealState(error = it.message ?: "")
-//                }
-//            }
-//
-//        }.launchIn(viewModelScope)
-//    }
 
 
     fun getMeals(s : GetMealUseCase.Params) {
